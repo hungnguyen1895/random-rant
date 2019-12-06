@@ -15,6 +15,16 @@ mongoose
     .then(() => console.log("MongoDB Connected"))
     .catch(err => console.log(err));
 
+const postsRouter = require('./routes/posts');
+const usersRouter = require('./routes/users');
+
+app.use('/posts', postsRouter);
+app.use('/users', usersRouter);
+
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname + "../public/index.html"));
+});
+
 app.listen(port, () => {
     console.log(`Server is running on port: ${port}`);
 });
