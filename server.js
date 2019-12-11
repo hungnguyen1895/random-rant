@@ -10,7 +10,7 @@ const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-const uri = require('./config/keys').mongoURI;
+const uri = process.env.mongoURI;
 mongoose
     .connect(uri, { useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => console.log("MongoDB Connected"))
